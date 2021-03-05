@@ -66,9 +66,15 @@ class SearchBar extends React.Component {
         this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
         e.preventDefault()
     }
+    handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
+            e.preventDefault()
+        }
+      }
     render() {
         return (
-            <div className="SearchBar">
+            <div className="SearchBar" onKeyPress={this.handleKeyPress}>
                 <div className="SearchBar-sort-options">
                     <ul>
                         {this.renderSortByOptions()}
